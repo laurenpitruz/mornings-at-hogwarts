@@ -7,13 +7,10 @@ class StocksAPI extends RESTDataSource {
     super()
     this.baseURL = 'https://sandbox.iexapis.com/stable/stock'
   }
-  // async getAllStocks(tickerObj) {
-  //   const tickers = tickerObj.tickers
-  //   const response = await this.get(`/${tickers.join()}/batch?types=quote,company&token=${process.env.IEX_API_KEY}`)
-  //   console.log(response)
-  //   for (let item in response) {
-  //     this.stockReducer(item)
-  //   }
+  // async getAllStocks() {
+  //   // const tickers = tickerObj.tickers
+  //   const response = await this.get(`/market/batch?symbols=aapl,fb,tsla&types=quote,company&token=${process.env.IEX_API_KEY}`)
+  //   Object.values(response).map(stock => this.stockReducer(stock))
   // }
   async getStock(tickerObj) {
     const ticker = tickerObj.ticker
