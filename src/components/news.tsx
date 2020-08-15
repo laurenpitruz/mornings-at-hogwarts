@@ -1,5 +1,9 @@
 import React, { Fragment } from 'react'
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client'
+
+import NewsItem from './newsitem'
+import Loading from './loading'
+import Error from './error'
 
 interface NewsArr {
   author: string;
@@ -25,13 +29,16 @@ const GET_NEWS = gql`
 
 export default function News () {
   const { data, loading, error } = useQuery<NewsData>(GET_NEWS)
+
+  if (loading) return <Loading />
+  if (error) return <Error />
+  if (!data) return <h1>Not found</h1>
+
   return (
     <Fragment>
-      {data ? data.news.map((article, index: number) => (
-        <div key={index}>
-          <p>{article.title}</p>
-        </div>
-      )) : <h2>No data</h2>}
+      {data.news.map((article, index: number) => (
+        <NewsItem article={article} />
+      ))}
     </Fragment>
   )
 }

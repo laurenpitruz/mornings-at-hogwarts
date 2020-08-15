@@ -1,26 +1,28 @@
 import React, { Fragment, useState} from 'react'
 import { gql, useQuery } from '@apollo/client';
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
+import Loading from './loading'
+import Error from './error'
 
-interface CurrentQuote {
-  peRatio: number;
-}
+// interface CurrentQuote {
+//   peRatio: number;
+// }
 
-interface Stock {
-  symbol: string;
-  companyName: string;
-  CEO: string;
-  description: string;
-  currentQuote: CurrentQuote;
-}
+// interface Stock {
+//   symbol: string;
+//   companyName: string;
+//   CEO: string;
+//   description: string;
+//   currentQuote: CurrentQuote;
+// }
 
-interface StockData {
-  stock: Stock;
-}
+// interface StockData {
+//   stock: Stock;
+// }
 
-interface StockVars {
-  ticker: string;
-}
+// interface StockVars {
+//   ticker: string;
+// }
 
 interface Ticker {
   ticker: string
@@ -35,6 +37,7 @@ const GET_STOCK = gql`
       description
       currentQuote {
         peRatio
+        latestPrice
       }
     }
   }
@@ -44,21 +47,22 @@ export default function Stock ({ ticker }: Ticker) {
   const [showModal, setShowModal] = useState(false)
   const toggle = () => setShowModal(!showModal)
 
-  const { data, loading, error } = useQuery<StockData, StockVars>(GET_STOCK, {
+  const { data, loading, error } = useQuery(GET_STOCK, {
     variables: { ticker }
   })
 
-  if (loading) return <h1>Loading</h1>
-  if (error) return <h1>Error</h1>
+  if (loading) return <Loading />
+  if (error) return <Error />
   if (!data) return <h1>Not Found</h1>
 
   return (
     <Fragment>
-      <p>Company: {data && data.stock.companyName}</p>
+      <p>Company: {data.stock.companyName}</p>
       <br/>
-      <p>CEO: {data && data.stock.CEO}</p>
+      <p>CEO: {data.stock.CEO}</p>
       <br/>
-      <p>P/E Ratio: {data && `${data.stock.currentQuote.peRatio}`}</p>
+      <p>P/E Ratio: {data.stock.currentQuote.peRatio}</p>
+      <p>Latest Price: {data.stock.currentQuote.latestPrice}</p>
       <Button
         variant="outline-primary"
         onClick={toggle}
