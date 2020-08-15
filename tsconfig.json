@@ -19,7 +19,16 @@
     "noEmit": true,
     "jsx": "react"
   },
+  "types": [
+    "node",
+    "webpack",
+    "react",
+    "react-dom",
+    "react-router-dom",
+    "reactstrap"
+  ],
   "include": [
-    "src"
-  ]
+    "src", "server/schema.js"
+  ],
+  "compileOnSave": true
 }
