@@ -38,6 +38,9 @@ const typeDefs = gql`
     description: String!
     currentQuote: Quote!
   }
+  # type Stocks {
+  #   stock: [Stock]!
+  # }
   type Quote {
     latestPrice: Float!
     marketCap: Int!
@@ -59,6 +62,7 @@ const typeDefs = gql`
   type Query {
     weather(zip: String!): Weather
     stock(ticker: String!): Stock
+    # stocks(tickers: [String]!): Stocks
     news: [Article]!
   }
 `

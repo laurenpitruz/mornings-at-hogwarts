@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import { client } from './client'
-import {
-  ApolloProvider
-} from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
