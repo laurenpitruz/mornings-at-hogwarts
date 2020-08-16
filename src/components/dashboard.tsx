@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from 'react'
 import Stock from './stock'
 import Weather from './weather'
 import News from './news'
-import { Form, Input, Button } from 'reactstrap'
+import { Form, Input, InputGroup, Button } from 'reactstrap'
 
 export default function Dashboard () {
   //tickers & next ticker
@@ -26,6 +26,13 @@ export default function Dashboard () {
     setTickers([nextStock, ...tickers])
     setNextStock('')
   }
+
+  const removeStock = (e: FormEvent<HTMLFormElement>) => {
+    const idx = tickers.indexOf(e.currentTarget.value)
+    // tickers.length === 1 ? setTickers([]) :
+    setTickers(tickers.splice(idx-1, 1))
+  }
+
   const resetZip = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setZip(`${nextZip}`)
@@ -37,8 +44,10 @@ export default function Dashboard () {
       <div className="stocks dashboard-column">
         <h1>Stocks</h1>
         <Form inline onSubmit={addStock}>
-          <Input value={nextStock} onChange={handleStockChange}/>
-          <Button type="submit">Add</Button>
+          <InputGroup size="sm">
+            <Input value={nextStock} onChange={handleStockChange}/>
+          </InputGroup>
+          <Button className="btn" type="submit">+</Button>
         </Form>
         {tickers && tickers.map((ticker, index) => (
           <div key={index}>
@@ -49,8 +58,10 @@ export default function Dashboard () {
       <div className="weather dashboard-column">
         <h1>Current Weather</h1>
         <Form inline onSubmit={resetZip}>
-          <Input value={nextZip} onChange={handleZipChange}/>
-          <Button type="submit">Set Zip</Button>
+          <InputGroup size="sm">
+            <Input value={nextZip} onChange={handleZipChange}/>
+          </InputGroup>
+          <Button className="btn" type="submit">Set Zip</Button>
         </Form>
         <Weather zip={zip} />
       </div>

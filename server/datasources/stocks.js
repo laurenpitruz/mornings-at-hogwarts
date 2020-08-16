@@ -29,8 +29,8 @@ class StocksAPI extends RESTDataSource {
       employees: stock.company.employees,
       description: stock.company.description,
       currentQuote: {
-        latestPrice: stock.quote.latestPrice,
-        marketCap: stock.quote.marketCap,
+        latestPrice: `$${stock.quote.latestPrice}`,
+        marketCap: `$${(stock.quote.marketCap / 1000000000).toLocaleString()} billion`,
         week52High: stock.quote.week52High,
         week52Low: stock.quote.week52Low,
         peRatio: stock.quote.peRatio,

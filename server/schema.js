@@ -39,8 +39,8 @@ const typeDefs = gql`
     currentQuote: Quote!
   }
   type Quote {
-    latestPrice: Float!
-    marketCap: Int!
+    latestPrice: String!
+    marketCap: String!
     week52Low: Float!
     week52High: Float!
     peRatio: Float!

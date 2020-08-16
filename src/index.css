@@ -2,6 +2,23 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: semplicitapro, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background-image: url('https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/20200513111242/hogwarts-house-crest.png');
+  color: black;
+}
+
+h1,
+h2,
+h3,
+.nav-brand {
+  font-family: scrivano, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .dashboard {
   display: flex;
   flex-flow: row nowrap;
@@ -12,4 +29,28 @@
   display: flex;
   flex-flow: column nowrap;
   width: 33%;
+  background-color: white;
+  margin: 1em;
+  opacity: 0.85;
+  padding-left: 1em;
+}
+
+.stock-div {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+}
+
+.red {
+  background-color: rgb(134, 9, 9);
+}
+
+.btn {
+  font-size: 0.3em;
+  margin: 0.5em;
+}
+
+.btn-small {
+  font-size: 0.2em;
+  padding: 0.3em;
 }

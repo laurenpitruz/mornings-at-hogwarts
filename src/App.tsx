@@ -3,8 +3,8 @@ import Dashboard from './components/dashboard'
 import { Navbar, Nav, NavbarBrand, NavLink } from 'reactstrap'
 
 const MyNavBar = () => (
-  <Navbar color="light" light expand="md">
-    <NavbarBrand href="/">
+  <Navbar color="dark" light expand="md">
+    <NavbarBrand href="/" className="nav-brand">
       MORNINGS @ HOGWARTS
     </NavbarBrand>
     <Nav className="mr-auto" navbar>

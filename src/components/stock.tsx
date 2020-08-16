@@ -38,6 +38,7 @@ const GET_STOCK = gql`
       currentQuote {
         peRatio
         latestPrice
+        marketCap
       }
     }
   }
@@ -57,18 +58,19 @@ export default function Stock ({ ticker }: Ticker) {
 
   return (
     <Fragment>
-      <p>Company: {data.stock.companyName}</p>
-      <br/>
-      <p>CEO: {data.stock.CEO}</p>
-      <br/>
-      <p>P/E Ratio: {data.stock.currentQuote.peRatio}</p>
-      <p>Latest Price: {data.stock.currentQuote.latestPrice}</p>
-      <Button
-        variant="outline-primary"
-        onClick={toggle}
-      >
-        Detail
-      </Button>
+      <div className="stock-div">
+        <h5>
+          {/* <Button value={ticker} onClick={removeStock} className="btn-small">x</Button> */}
+          <Button
+          variant="outline-primary"
+          onClick={toggle}
+          className="btn-small"
+        >
+          More
+        </Button> <strong>{data.stock.symbol}</strong>: {data.stock.companyName}</h5>
+        <h6>Latest Price: {data.stock.currentQuote.latestPrice}</h6>
+        <small>P/E Ratio: {data.stock.currentQuote.peRatio}</small> | <small>Market Cap: {data.stock.currentQuote.marketCap}</small>
+      </div>
       <Modal
         size="lg"
         isOpen={showModal}
