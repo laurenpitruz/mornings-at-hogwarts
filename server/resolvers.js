@@ -7,6 +7,8 @@ module.exports = {
     stock: (_, { ticker }, { dataSources }) =>
     dataSources.stockAPI.getStock({ ticker }),
     news: (_,__, { dataSources }) =>
-    dataSources.newsAPI.getNews()
+    dataSources.newsAPI.getNews(),
+    characters: (_,__, {dataSources }) => dataSources.potterCharsAPI.getCharacters(),
+    houses: (_,__, {dataSources}) => dataSources.potterHouseAPI.getHouses()
   }
 }

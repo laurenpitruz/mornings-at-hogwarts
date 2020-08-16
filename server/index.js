@@ -5,6 +5,8 @@ const resolvers = require('./resolvers')
 const WeatherAPI = require('./datasources/weather')
 const StocksAPI = require('./datasources/stocks')
 const ArticleAPI = require('./datasources/news')
+const PotterCharsAPI = require('./datasources/potterChar')
+const PotterHouseAPI = require('./datasources/potterHouse')
 
 const server = new ApolloServer({
   typeDefs,
@@ -12,7 +14,9 @@ const server = new ApolloServer({
   dataSources: () => ({
     weatherAPI: new WeatherAPI (),
     stockAPI: new StocksAPI(),
-    newsAPI: new ArticleAPI()
+    newsAPI: new ArticleAPI(),
+    potterCharsAPI: new PotterCharsAPI(),
+    potterHouseAPI: new PotterHouseAPI()
   }),
   engine: {
     reportSchema: true,

@@ -55,12 +55,34 @@ const typeDefs = gql`
     content: String!
     date: String!
   }
+  # house schema
+  type House {
+    id: ID!,
+    name: String!,
+    mascot: String,
+    headOfHouse: String,
+    houseGhost: String,
+    founder: String,
+    members: [String],
+    values: [String],
+    colors: [String]
+  }
+  # characters schema
+  type Character {
+    id: ID!,
+    name: String!,
+    role: String!,
+    school: String!
+    house: House
+  }
   # queries
   type Query {
     weather(zip: String!): Weather
     stock(ticker: String!): Stock
     # stocks: [Stock]!
     news: [Article]!
+    houses: [House]
+    characters: [Character]
   }
 `
 
