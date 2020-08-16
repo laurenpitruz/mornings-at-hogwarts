@@ -1,6 +1,13 @@
 const { gql } = require('apollo-server')
 
 const typeDefs = gql`
+  # user schema
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    cityName: String!
+  }
   # weather schema
   type Weather {
     id: ID!
@@ -75,6 +82,12 @@ const typeDefs = gql`
     school: String!
     house: House
   }
+  # Spells
+  type Spell {
+    id: ID!
+    spell: String
+    effect: String
+  }
   # queries
   type Query {
     weather(zip: String!): Weather
@@ -82,7 +95,11 @@ const typeDefs = gql`
     # stocks: [Stock]!
     news: [Article]!
     houses: [House]
+    house (id: String!): House
+    spells: [Spell]
     characters: [Character]
+    users: [User]
+    user: User
   }
 `
 

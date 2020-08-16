@@ -1,3 +1,4 @@
+const User = require('./db/user')
 module.exports = {
   Query: {
     weather: (_, { zip }, { dataSources }) =>
@@ -8,7 +9,11 @@ module.exports = {
     dataSources.stockAPI.getStock({ ticker }),
     news: (_,__, { dataSources }) =>
     dataSources.newsAPI.getNews(),
-    characters: (_,__, {dataSources }) => dataSources.potterCharsAPI.getCharacters(),
-    houses: (_,__, {dataSources}) => dataSources.potterHouseAPI.getHouses()
+    characters: (_,__, {dataSources }) => dataSources.potterAPI.getCharacters(),
+    houses: (_,__, { dataSources }) => dataSources.potterAPI.getHouses(),
+    house: (_,{ id },{ dataSources }) => dataSources.potterAPI.getHouse({id}),
+    spells: (_,__, {dataSources}) => dataSources.potterAPI.getSpells(),
+    users: () => User.findAll(),
+    user: ({id}) => User.findOne({where: {id}}),
   }
 }

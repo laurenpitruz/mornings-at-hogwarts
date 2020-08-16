@@ -7,8 +7,8 @@ class WeatherAPI extends RESTDataSource {
     super()
     this.baseURL = 'http://api.openweathermap.org/data/2.5/weather'
   }
-  async getWeather(zipObj) {
-    const zip = zipObj.zip
+  async getWeather({ zip }) {
+    // const zip = zipObj.zip
     const response = await this.get(`?zip=${zip},us&units=imperial&appid=${process.env.OPENWEATHER_API_KEY}`)
     return this.weatherReducer(response, zip)
   }
