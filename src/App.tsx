@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import Dashboard from './components/dashboard'
 import { Navbar, Nav, NavbarBrand, NavLink } from 'reactstrap'
+import { Switch, Route } from 'react-router-dom'
 
 const MyNavBar = () => (
-  <Navbar color="dark" light expand="md">
+  <Navbar color="light" light expand="md">
     <NavbarBrand href="/" className="nav-brand">
       MORNINGS @ HOGWARTS
     </NavbarBrand>
@@ -17,7 +18,9 @@ const App = () => {
   return (
     <Fragment>
       <MyNavBar />
-      <Dashboard />
+      <Switch>
+        <Route path="/" component={Dashboard} />
+      </Switch>
     </Fragment>
   );
 }

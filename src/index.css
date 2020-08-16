@@ -6,7 +6,9 @@ body {
   font-family: semplicitapro, sans-serif;
   font-weight: 300;
   font-style: normal;
-  background-image: url('https://d2rdhxfof4qmbb.cloudfront.net/wp-content/uploads/20200513111242/hogwarts-house-crest.png');
+  background-image: url('https://render.fineartamerica.com/images/rendered/default/poster/8/10/break/images/artworkimages/medium/2/1-hogwarts-crest-monn-print.jpg');
+  background-size: 300px 400px;
+  background-repeat: repeat;
   color: black;
 }
 
@@ -31,7 +33,7 @@ h3,
   width: 33%;
   background-color: white;
   margin: 1em;
-  opacity: 0.85;
+  opacity: 0.9;
   padding-left: 1em;
 }
 
