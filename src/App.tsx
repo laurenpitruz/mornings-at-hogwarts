@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Dashboard from './components/dashboard'
+import Spells from './components/spells'
 import { Navbar, Nav, NavbarBrand, NavLink } from 'reactstrap'
 import { Switch, Route } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ const MyNavBar = () => (
     </NavbarBrand>
     <Nav className="mr-auto" navbar>
       <NavLink href="/">Dashboard</NavLink>
+      <NavLink href="/spells">Spells</NavLink>
     </Nav>
   </Navbar>
 )
@@ -19,7 +21,8 @@ const App = () => {
     <Fragment>
       <MyNavBar />
       <Switch>
-        <Route path="/" component={Dashboard} />
+        <Route exact path="/" component={Dashboard} />
+        <Route path="/spells" component={Spells} />
       </Switch>
     </Fragment>
   );

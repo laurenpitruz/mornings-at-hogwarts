@@ -28,9 +28,7 @@ export default function Dashboard () {
   }
 
   const removeStock = (e: FormEvent<HTMLFormElement>) => {
-    const idx = tickers.indexOf(e.currentTarget.value)
-    // tickers.length === 1 ? setTickers([]) :
-    setTickers(tickers.splice(idx-1, 1))
+    setTickers(tickers.filter(el => el !== e.currentTarget.value))
   }
 
   const resetZip = (e: FormEvent<HTMLFormElement>) => {
@@ -51,7 +49,7 @@ export default function Dashboard () {
         </Form>
         {tickers && tickers.map((ticker, index) => (
           <div key={index}>
-            <Stock ticker={ticker} />
+            <Stock ticker={ticker} removeStock={removeStock} />
           </div>
         ))}
       </div>

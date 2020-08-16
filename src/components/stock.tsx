@@ -1,31 +1,12 @@
-import React, { Fragment, useState} from 'react'
+import React, { Fragment, useState, FormEvent} from 'react'
 import { gql, useQuery } from '@apollo/client';
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap'
 import Loading from './loading'
 import Error from './error'
 
-// interface CurrentQuote {
-//   peRatio: number;
-// }
-
-// interface Stock {
-//   symbol: string;
-//   companyName: string;
-//   CEO: string;
-//   description: string;
-//   currentQuote: CurrentQuote;
-// }
-
-// interface StockData {
-//   stock: Stock;
-// }
-
-// interface StockVars {
-//   ticker: string;
-// }
-
-interface Ticker {
+interface StockProps {
   ticker: string
+  removeStock: (e: FormEvent<HTMLFormElement>) => void
 }
 
 const GET_STOCK = gql`
@@ -44,7 +25,7 @@ const GET_STOCK = gql`
   }
 `
 
-export default function Stock ({ ticker }: Ticker) {
+export default function Stock ({ ticker, removeStock }: StockProps) {
   const [showModal, setShowModal] = useState(false)
   const toggle = () => setShowModal(!showModal)
 
@@ -60,6 +41,7 @@ export default function Stock ({ ticker }: Ticker) {
     <Fragment>
       <div className="stock-div">
         <h5>
+          <Button value={ticker} onClick={removeStock} className="btn-small red">x</Button>
           {/* <Button value={ticker} onClick={removeStock} className="btn-small">x</Button> */}
           <Button
           variant="outline-primary"

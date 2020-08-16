@@ -54,5 +54,16 @@ h3,
 
 .btn-small {
   font-size: 0.2em;
-  padding: 0.3em;
+}
+
+.spells-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.spell-div {
+  background-color: white;
+  opacity: 0.9;
+  width: 200px;
+  margin: 1em;
 }

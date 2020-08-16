@@ -96,7 +96,7 @@ const typeDefs = gql`
     news: [Article]!
     houses: [House]
     house (id: String!): House
-    spells: [Spell]
+    spells: [Spell]!
     characters: [Character]
     users: [User]
     user: User
