@@ -13,7 +13,8 @@ class WeatherAPI extends RESTDataSource {
     return this.weatherReducer(response, zip)
   }
   weatherReducer(weather, zip) {
-    // const date = new Date()
+    const sunrise = new Date(weather.sys.sunrise * 1000).toLocaleTimeString()
+    const sunset = new Date(weather.sys.sunset * 1000).toLocaleTimeString()
     return {
       id: weather.id || 0,
       zip: zip,
@@ -31,8 +32,8 @@ class WeatherAPI extends RESTDataSource {
         humidity: weather.main.humidity,
         windSpeed: weather.wind.speed
       },
-      sunrise: weather.sys.sunrise,
-      sunset: weather.sys.sunset
+      sunrise,
+      sunset
     }
   }
 }

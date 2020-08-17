@@ -17,8 +17,8 @@ const typeDefs = gql`
     longitude: Float!
     latitude: Float!
     currentWeather: CurrentWeather!
-    sunrise: Int!
-    sunset: Int!
+    sunrise: String!
+    sunset: String!
   }
   type CurrentWeather {
     status: String!
@@ -70,7 +70,6 @@ const typeDefs = gql`
     headOfHouse: String,
     houseGhost: String,
     founder: String,
-    members: [String],
     values: [String],
     colors: [String]
   }
@@ -80,7 +79,7 @@ const typeDefs = gql`
     name: String!,
     role: String!,
     school: String!
-    house: House
+    house: String
   }
   # Spells
   type Spell {

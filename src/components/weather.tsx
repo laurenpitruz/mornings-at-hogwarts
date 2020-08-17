@@ -37,12 +37,11 @@ export default function Weather ({ zip }: Zip) {
   return (
     <Fragment>
       <h3>{data.weather.cityName} </h3>
-      <h6>Currently: {data.weather.currentWeather.status} | {data.weather.currentWeather.temp} F</h6>
-      <p>Daily High: {data.weather.currentWeather.tempHigh} || Daily Low: {data.weather.currentWeather.tempLow}</p>
+      <h6><strong>Currently:</strong> {data.weather.currentWeather.temp} F & {data.weather.currentWeather.status}</h6>
+      <p><strong>H:</strong> {data.weather.currentWeather.tempHigh} || <strong>L:</strong> {data.weather.currentWeather.tempLow}</p>
+      <p><strong>Sunrise:</strong> {data.weather.sunrise}</p>
+      <p><strong>Sunset:</strong> {data.weather.sunset}</p>
       <small>lon: {data.weather.longitude} | lat: {data.weather.latitude}</small>
-      <br />
-      <p>Sunrise: {data.weather.sunrise}</p>
-      <p>Sunset: {data.weather.sunset}</p>
     </Fragment>
   )
 }

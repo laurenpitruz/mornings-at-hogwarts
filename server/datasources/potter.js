@@ -15,6 +15,10 @@ class PotterAPI extends RESTDataSource {
     const response = await this.get(`/characters?key=${process.env.POTTER_API_KEY}`)
     return Array.isArray(response) ? response.map(async (char) => this.characterReducer(char)) : []
   }
+  async getCharacter({ id }) {
+    const response = await this.get(`/characters/${id}?key=${process.env.POTTER_API_KEY}`)
+    return this.characterReducer(response[0])
+  }
   async getHouse({ id }) {
     const response = await this.get(`/houses/${id}?key=${process.env.POTTER_API_KEY}`)
     return this.houseReducer(response[0])
@@ -28,6 +32,7 @@ class PotterAPI extends RESTDataSource {
       id: char._id,
       name: char.name,
       role: char.role,
+      house: char.house,
       school: char.school || 'unknown',
     }
   }
@@ -35,11 +40,10 @@ class PotterAPI extends RESTDataSource {
     return {
       id: house._id,
       name: house.name,
-      mascot: house.role,
+      mascot: house.mascot,
       headOfHouse: house.headOfHouse,
       houseGhost: house.houseGhost,
       founder: house.founder,
-      members: house.members,
       values: house.values,
       colors: house.colors
     }
