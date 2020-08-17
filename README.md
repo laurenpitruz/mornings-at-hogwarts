@@ -1,3 +1,10 @@
+# Mornings @ Hogwarts
+A fun weekend project making a dashboard of stock, weather and news data along with data about Harry Potter characters and spells - the best way to start your morning!
+
+API built with Apollo Server & GraphQL, frontend uses Typescript and Apollo Client.
+
+
+# Create React App scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
