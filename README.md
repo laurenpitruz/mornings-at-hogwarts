@@ -3,8 +3,10 @@ A fun weekend project making a dashboard of stock, weather and news data along w
 
 API built with Apollo Server & GraphQL, frontend uses Typescript and Apollo Client.
 
+### `npm run build-start`
+Starts Apollo server + serve for the CRA build.
 
-# Create React App scripts
+# FYI -- Create React App scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
