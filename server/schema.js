@@ -76,10 +76,12 @@ const typeDefs = gql`
   # characters schema
   type Character {
     id: ID!,
-    name: String!,
-    role: String!,
+    name: String!
+    role: String!
     school: String!
     house: String
+    wand: String
+    patronus: String
   }
   # Spells
   type Spell {
@@ -96,6 +98,7 @@ const typeDefs = gql`
     houses: [House]
     house (id: String!): House
     spells: [Spell]!
+    character (name: String!): Character
     characters: [Character]
     users: [User]
     user: User

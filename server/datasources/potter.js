@@ -15,8 +15,8 @@ class PotterAPI extends RESTDataSource {
     const response = await this.get(`/characters?key=${process.env.POTTER_API_KEY}`)
     return Array.isArray(response) ? response.map(async (char) => this.characterReducer(char)) : []
   }
-  async getCharacter({ id }) {
-    const response = await this.get(`/characters/${id}?key=${process.env.POTTER_API_KEY}`)
+  async getCharacter({ name }) {
+    const response = await this.get(`/characters?name=${name}&key=${process.env.POTTER_API_KEY}`)
     return this.characterReducer(response[0])
   }
   async getHouse({ id }) {
@@ -34,6 +34,8 @@ class PotterAPI extends RESTDataSource {
       role: char.role,
       house: char.house,
       school: char.school || 'unknown',
+      wand: char.wand,
+      patronus: char.patronus
     }
   }
   houseReducer(house) {

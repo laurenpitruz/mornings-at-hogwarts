@@ -9,7 +9,8 @@ module.exports = {
     dataSources.stockAPI.getStock({ ticker }),
     news: (_,__, { dataSources }) =>
     dataSources.newsAPI.getNews(),
-    characters: (_,__, {dataSources }) => dataSources.potterAPI.getCharacters(),
+    characters: (_,__, { dataSources }) => dataSources.potterAPI.getCharacters(),
+    character: (_,{ name }, { dataSources }) => dataSources.potterAPI.getCharacter({name}),
     houses: (_,__, { dataSources }) => dataSources.potterAPI.getHouses(),
     house: (_,{ id },{ dataSources }) => dataSources.potterAPI.getHouse({id}),
     spells: (_,__, {dataSources}) => dataSources.potterAPI.getSpells(),
